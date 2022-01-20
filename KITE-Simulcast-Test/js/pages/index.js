@@ -1,0 +1,1 @@
+exports.MedoozePage = require("./MedoozePage");

@@ -1,0 +1,51 @@
+{
+  "type": 1,
+  "name": "JS Mediasoup Interop",
+  "permute": false,
+  "grids": [
+    {
+      "type": "local",
+      "url": "http://localhost:4444/wd/hub"
+    }
+  ],
+  "tests": [
+    {
+      "name": "JS Mediasoup Local Grid %ts",
+      "description":"JS interop test for Mediasoup",
+      "tupleSize": 2,
+      "testImpl": "Mediasoup.js",
+      "payload": {
+        "url": "https://v3demo.mediasoup.org/?roomId=",
+        "rooms": [
+          "hackathonRoom_01",
+          "hackathonRoom_02",
+          "hackathonRoom_03"
+        ],
+        "port": 30000,
+        "usersPerRoom": 2,
+        "takeScreenshotForEachTest": true,
+        "testTimeout": 60,
+        "getStats" : {
+          "enabled": true,
+          "statsCollectionTime": 2,
+          "statsCollectionInterval": 1,
+          "peerConnections": ["window.PC1", "window.PC2"],
+          "selectedStats" : ["inbound-rtp", "outbound-rtp", "candidate-pair"]
+        },
+        "loadReachTime": 5
+      }
+    }
+  ],
+  "clients": [
+    {
+      "browserName": "chrome",
+      "platform": "localhost",
+      "headless": false
+    },
+    {
+      "browserName": "firefox",
+      "platform": "localhost",
+      "headless": false
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "type": 1,
+  "name": "Janus Video Call Local",
+  "permute": true,
+  "matrix": [[0,1]],
+  "_networkInstrumentation": {
+    "instances": "path_to/cosmogrid.gateways.config.json",
+    "networkProfiles": "path_to/network.profiles.config.json"
+  },
+  "grids": [
+    {
+      "type": "local",
+      "url": "http://localhost:4444/wd/hub"
+    }
+  ],
+  "tests": [
+    {
+      "name": "Janus Video Call Test Local Grid %ts",
+      "description":"video call test for Janus",
+      "tupleSize": 2,
+      "testImpl": "io.cosmosoftware.kite.janus.JanusVideoCallTest",
+      "payload":{
+        "url": "https://janus.conf.meetecho.com/videocalltest.html",
+        "_url": "https://janus.conf.meetecho.com/videocalltest.html?simulcast=true",
+        "usersPerRoom": 2,
+        "pageTitle": "Janus Video Call Test",
+        "takeScreenshotForEachTest": true,
+        "testTimeout": 20,
+        "sfu": false,
+        "meetingDuration": 30,
+        "getStats" : {
+          "enabled": true,
+          "statsCollectionTime": 2000,
+          "statsCollectionInterval": 1000,
+          "peerConnections": ["videocall.webrtcStuff.pc"],
+          "selectedStats" : ["inbound-rtp", "outbound-rtp", "candidate-pair"]
+        },
+        "getCharts" : {
+          "enabled": true,
+          "pathToGenerateChartsFile": "/generateCharts-min.js",
+          "pathToChartBundleMin": "/chart.bundle.min.js",
+          "chartsStatsInterval": 2000,
+          "peerConnections": ["videocall.webrtcStuff.pc"],
+          "config": {
+            "width": 500,
+            "height": 500,
+            "colors": [
+              "#1DABE6",
+              "#C3CED0",
+              "#41ab48",
+              "#E43034",
+              "#000000",
+              "#AF060F"
+            ],
+            "filter": [
+              "inbound-rtp",
+              "outbound-rtp",
+              "candidate-pair"
+            ],
+            "charts": [
+              "receivedAudioBitrates",
+              "receivedVideoBitrates",
+              "sentAudioBitrates",
+              "sentVideoBitrates",
+              "audioPacketLoss",
+              "videoPacketLoss",
+              "audioJitter",
+              "audioLevel",
+              "framesReceivedRate",
+              "framesSentRate"
+            ]
+          }
+        },
+        "_scenarios" : [
+          {
+            "type": "gateway",
+            "name": "GOOD",
+            "network": "GOOD",
+            "duration": 30000,
+            "gateway": "gw1"
+          },
+          {
+            "type": "gateway",
+            "name": "TBF BW limit 800 kbps",
+            "network": "TBF_800",
+            "duration": 60000,
+            "gateway": "gw1"
+          },
+          {
+            "type": "gateway",
+            "name": "GOOD",
+            "network": "GOOD",
+            "duration": 30000,
+            "gateway": "gw1"
+          }
+        ]
+      }
+    }
+  ],
+  "clients": [
+    {
+      "name": "Bob",
+      "browserName": "chrome",
+      "platform": "localhost",
+      "gateway": "gw1"
+    },
+    {
+      "name": "Alice",
+      "browserName": "chrome",
+      "platform": "localhost",
+      "gateway": "gw2"
+    }
+  ]
+}

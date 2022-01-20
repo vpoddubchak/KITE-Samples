@@ -1,0 +1,38 @@
+{
+  "type": 1,
+  "name": "OpenVidu Interop Local",
+  "permute": false,
+  "grids": [
+    {
+      "type": "local",
+      "url": "http://localhost:4444/wd/hub"
+    }
+  ],
+  "tests": [
+    {
+      "name": "OpenVidu Local Grid %ts",
+      "description":"interop test for OpenVidu",
+      "tupleSize": 2,
+      "testImpl": "io.cosmosoftware.kite.openvidu.KiteOpenViduTest",
+      "payload": {
+        "url": "https://demos.openvidu.io/openvidu-call/#/",
+        "rooms": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
+        "usersPerRoom": 4,
+        "takeScreenshotForEachTest": true,
+        "testTimeout": 20
+      }
+    }
+  ],
+  "clients": [
+    {
+      "browserName": "chrome",
+      "platform": "localhost",
+      "focus": true
+    },
+    {
+      "browserName": "firefox",
+      "platform": "localhost",
+      "focus": true
+    }
+  ]
+}

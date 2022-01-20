@@ -1,0 +1,61 @@
+{
+  "type": 1,
+  "name": "Mediasoup Interop Local",
+  "permute": false,
+  "grids": [
+    {
+      "type": "local",
+      "url": "http://localhost:4444/wd/hub"
+    }
+  ],
+  "tests": [
+    {
+      "name": "Mediasoup Local Grid %ts",
+      "description":"interop test for Mediasoup",
+      "tupleSize": 4,
+      "testImpl": "io.cosmosoftware.kite.mediasoup.KiteMediasoupTest",
+      "payload": {
+        "url": "https://v3demo.mediasoup.org/?roomId=",
+        "rooms": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
+        "usersPerRoom": 2,
+        "takeScreenshotForEachTest": true,
+        "testTimeout": 20,
+        "getStats" : {
+          "enabled": true,
+          "statsCollectionTime": 2,
+          "statsCollectionInterval": 1,
+          "peerConnections": ["window.PC1", "window.PC2"],
+          "selectedStats" : ["inbound-rtp", "outbound-rtp", "candidate-pair"]
+        },
+        "meetingDuration": 20
+      }
+    }
+  ],
+  "clients": [
+    {
+      "browserName": "chrome",
+      "platform": "localhost",
+      "headless": false,
+      "focus": true
+    },
+    {
+      "browserName": "firefox",
+      "platform": "localhost",
+      "headless": false,
+      "focus": true
+    }
+
+  ],
+  "_browsers_list": [
+    {
+      "browserName": "chrome",
+      "platform": "MAC",
+      "headless": true
+    },
+    {
+      "browserName": "firefox",
+      "platform": "LINUX",
+      "headless": true
+    }
+  ]
+}

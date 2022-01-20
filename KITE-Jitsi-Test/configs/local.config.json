@@ -1,0 +1,45 @@
+{
+  "type": 1,
+  "name": "Jitsi Test",
+  "permute": false,
+  "grids": [
+    {
+      "type": "local",
+      "url": "http://localhost:4444/wd/hub"
+    }
+  ],
+  "tests": [
+    {
+      "name": "Jitsi Test %ts",
+      "description": "Jitsi Test",
+      "tupleSize": 2,
+      "testImpl": "io.cosmosoftware.kite.jitsi.KiteJitsiTest",
+      "payload": {
+        "url": "https://meet.jit.si/",
+        "rooms": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
+        "usersPerRoom": 2,
+        "testTimeout": 20,
+        "meetingDuration": 20,
+        "getStats" : {
+          "enabled": true,
+          "statsCollectionTime": 2,
+          "statsCollectionInterval": 1,
+          "peerConnections": ["window.pc[0]"],
+          "selectedStats" : ["inbound-rtp", "outbound-rtp", "candidate-pair"]
+        }
+      }
+    }
+  ],
+  "clients": [
+    {
+      "browserName": "chrome",
+      "platform": "localhost",
+      "focus": true
+    },
+    {
+      "browserName": "firefox",
+      "platform": "localhost",
+      "focus": true
+    }
+  ]
+}
