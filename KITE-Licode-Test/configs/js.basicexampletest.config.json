@@ -29,11 +29,8 @@
   "clients": [
     {
       "browserName": "chrome",
-      "platform": "LINUX"
-    },
-    {
-      "browserName": "firefox",
-      "platform": "LINUX"
+      "platform": "localhost",
+      "headless": false
     }
   ]
 }
