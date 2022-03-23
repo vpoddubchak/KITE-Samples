@@ -66,6 +66,7 @@
   </repositories>
 
   <modules>
+    <module>KITE-Licode-Test</module>
     <module>KITE-Janus-Test</module>
     <module>KITE-Simulcast-Test</module>
     <module>KITE-Mediasoup-Test</module>
