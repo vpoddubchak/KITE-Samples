@@ -26,7 +26,7 @@ public class KiteJanusTestTest extends TestCase {
   }
 
   private static final String TEST_NAME = "Janus UnitTest";
-  private static final String CONFIG_FILE = "configs/local.janus.config.json";
+  private static final String CONFIG_FILE = "configs/echo.janus.config.json";
 
   private List<WebDriver> webDriverList = new ArrayList<>();
   private Tuple tuple = getFirstTuple(CONFIG_FILE);

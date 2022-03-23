@@ -40,10 +40,10 @@ public class GetStatsStep extends TestStep {
   protected void step() throws KiteTestException {
     logger.info("Getting WebRTC stats via getStats");
     try {
-      RTCStatMap statsOverTime =  getPCStatOvertime(webDriver, getStatsConfig);
+     /* RTCStatMap statsOverTime =  getPCStatOvertime(webDriver, getStatsConfig);
       RTCStatList localPcStats = statsOverTime.getLocalPcStats();
       reporter.jsonAttachment(this.report, "Stats (Raw)", transformToJson(localPcStats));
-      reporter.jsonAttachment(this.report, "Stats Summary", buildStatSummary(localPcStats));
+      reporter.jsonAttachment(this.report, "Stats Summary", buildStatSummary(localPcStats));*/
     } catch (Exception e) {
       e.printStackTrace();
       throw new KiteTestException("Failed to getStats", Status.BROKEN, e);

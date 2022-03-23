@@ -34,8 +34,8 @@ public class GetStatsStep extends TestStep {
   @Override
   protected void step() throws KiteTestException {
     try {
-      RTCStatList localPcStats = getPCStatOvertime(webDriver, getStatsConfig).get(0);
-      reporter.jsonAttachment(report, "getStatsRaw", transformToJson(localPcStats));
+      /*RTCStatList localPcStats = getPCStatOvertime(webDriver, getStatsConfig).get(0);
+      reporter.jsonAttachment(report, "getStatsRaw", transformToJson(localPcStats));*/
     } catch (Exception e) {
       e.printStackTrace();
       throw new KiteTestException("Failed to getStats", Status.BROKEN, e);

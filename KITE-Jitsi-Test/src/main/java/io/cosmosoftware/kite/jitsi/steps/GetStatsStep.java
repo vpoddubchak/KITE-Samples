@@ -37,9 +37,9 @@ public class GetStatsStep extends TestStep {
   @Override
   protected void step() throws KiteTestException {
     ((JavascriptExecutor) webDriver).executeScript(meetingPage.getPeerConnectionScript());
-    RTCStatMap statsOverTime =  getPCStatOvertime(webDriver, getStatsConfig);
+   /* RTCStatMap statsOverTime =  getPCStatOvertime(webDriver, getStatsConfig);
     RTCStatList localPcStats = statsOverTime.getLocalPcStats();
     reporter.jsonAttachment(this.report, "Stats (Raw)", transformToJson(localPcStats));
-    reporter.jsonAttachment(this.report, "Stats Summary", buildStatSummary(localPcStats));
+    reporter.jsonAttachment(this.report, "Stats Summary", buildStatSummary(localPcStats));*/
   }
 }

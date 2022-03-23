@@ -70,7 +70,7 @@ public class GetStatsStep extends TestStep {
             getStatsConfig.getJsonArray("peerConnections").getString(0),
             getStatsConfig.getInt("statsCollectionTime"),
             getStatsConfig.getInt("statsCollectionInterval"),
-            getStatsConfig.getJsonArray("selectedStats"));
+            getStatsConfig.getJsonArray("selectedStats").getString(0));
         JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
         pcStatMap.put(getStatsConfig.getJsonArray("peerConnections").getString(0), sentStats);
         for (int i = 1; i < remotePC.size() + 1; i++) {
@@ -78,7 +78,7 @@ public class GetStatsStep extends TestStep {
               remotePC.get(i - 1),
               getStatsConfig.getInt("statsCollectionTime"),
               getStatsConfig.getInt("statsCollectionInterval"),
-              getStatsConfig.getJsonArray("selectedStats"));
+              getStatsConfig.getJsonArray("selectedStats").getString(0));
           logger.info("Adding pc stats to map for :" + remotePC.get(i - 1) );
           pcStatMap.put(remotePC.get(i - 1), receivedStats);
           arrayBuilder.add(transformToJson(receivedStats));
@@ -89,10 +89,10 @@ public class GetStatsStep extends TestStep {
         reporter.jsonAttachment(report, "Stats (Raw)", builder.build());
         reporter.jsonAttachment(report, "Stats Summary", buildStatSummary(pcStatMap));
       } else {
-        RTCStatMap statsOverTime =  getPCStatOvertime(webDriver, getStatsConfig);
+        /*RTCStatMap statsOverTime =  getPCStatOvertime(webDriver, getStatsConfig);
         RTCStatList localPcStats = statsOverTime.getLocalPcStats();
         reporter.jsonAttachment(this.report, "Stats (Raw)", transformToJson(localPcStats));
-        reporter.jsonAttachment(this.report, "Stats Summary", buildStatSummary(localPcStats));
+        reporter.jsonAttachment(this.report, "Stats Summary", buildStatSummary(localPcStats));*/
       }
 
     } catch (Exception e) {
